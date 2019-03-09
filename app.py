@@ -21,11 +21,11 @@ def display_home_page():
 def insert_user_details():
 
     if flask.request.method == 'POST':
-        first_name = flask.request.form['fname']
-        last_name = flask.request.form['lname']
+        first_name = flask.request.form['first_name']
+        last_name = flask.request.form['last_name']
         email = flask.request.form['email']
-        contact_number = flask.request.form['cnumber']
-        password = flask.request.form['pwd']
+        contact_number = flask.request.form['contact_number']
+        password = flask.request.form['password']
 
         if first_name and last_name and email and contact_number and password:
 
@@ -48,5 +48,7 @@ def login():
             return render_template('user_profile.html',data=data)
     else:
         return render_template('login.html')
-  
+@app.route('/logout',methods=['POST','GET'])
+def logout():
+    return render_template('homepage.html')
 app.run()
